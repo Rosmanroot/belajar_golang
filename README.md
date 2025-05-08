@@ -1,2 +1,2 @@
 # belajar_golang
-belajar golang
+Memebuat tutorial youtube hello world
