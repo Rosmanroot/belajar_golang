@@ -1,2 +1,3 @@
 # belajar_golang
-Memebuat tutorial youtube dan medium hello world
+
+Membuat tutorial youtube dan medium hello world menggunakan Go
