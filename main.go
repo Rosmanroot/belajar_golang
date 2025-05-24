@@ -2,12 +2,15 @@ package main
 
 import "github.com/gofiber/fiber/v2"
 
-func main() {
-	app := fiber.New()
+type LoginInput struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
 
-	app.Get("/", func(c *fiber.Ctx) error{
-		return c.SendString("Hello, World")
-	})
-
-	app.Listen(":3000")
+func ProsesLogin(input LoginInput) (bool, string) {
+	// Username dan password yang dianggap benar
+	if input.Username == "admin" && input.Password == "123" {
+		return true, "Login berhasil"
+	}
+	return false, "Username atau password salah"
 }
