@@ -1,53 +1,22 @@
 package main
 
-import "github.com/gofiber/fiber/v2"
-
-type LoginInput struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
-func ProsesLogin(input LoginInput) (bool, string) {
-	// Username dan password yang dianggap benar
-	if input.Username == "admin" && input.Password == "123" {
-		return true, "Login berhasil"
-	}
-	return false, "Username atau password salah"
-}
+import (
+	"github.com/gofiber/fiber/v2"
+	"golang2/handler" // pastikan ini sesuai dengan struktur folder kamu
+)
 
 func main() {
 	app := fiber.New()
 
-	// Route GET "/" (untuk akses dari browser)
+	// Route GET untuk cek server
 	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("✅ Server aktif. Gunakan POST /login untuk login.")
+		return c.SendString("✅ Server aktif. Gunakan POST /login dan /register.")
 	})
 
-	// Route POST "/login" (untuk proses login)
-	app.Post("/login", func(c *fiber.Ctx) error {
-		var input LoginInput
+	// Route login dan register
+	app.Post("/login", handler.LoginHandler)
+	app.Post("/register", handler.RegisterHandler)
 
-		// Parsing body JSON ke struct
-		if err := c.BodyParser(&input); err != nil {
-			return c.Status(400).JSON(fiber.Map{
-				"message": "Format JSON tidak valid",
-			})
-		}
-
-		// Panggil fungsi login
-		success, msg := ProsesLogin(input)
-
-		if success {
-			return c.JSON(fiber.Map{
-				"message": msg,
-				"user":    input.Username,
-			})
-		}
-		return c.Status(401).JSON(fiber.Map{
-			"message": msg,
-		})
-	})
-
-	// Jalankan server di port 3000
+	// Jalankan server
 	app.Listen(":3000")
 }
