@@ -6,6 +6,7 @@ import (
 	"golang2/service"
 )
 
+
 // Handler untuk login
 func LoginHandler(c *fiber.Ctx) error {
 	var input model.User
