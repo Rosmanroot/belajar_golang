@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"golang2/handler" // pastikan ini sesuai dengan struktur folder kamu
+	"golang2/handler" 
 )
 
 func main() {
