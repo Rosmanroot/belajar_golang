@@ -27,3 +27,4 @@ func Login(user model.User) (bool, string) {
 	}
 	return false, "Username atau password salah"
 }
+
