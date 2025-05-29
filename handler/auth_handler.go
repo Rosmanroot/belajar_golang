@@ -31,7 +31,6 @@ func LoginHandler(c *fiber.Ctx) error {
 	})
 }
 
-
 // Handler untuk register
 func RegisterHandler(c *fiber.Ctx) error {
 	var input model.User
