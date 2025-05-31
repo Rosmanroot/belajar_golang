@@ -6,8 +6,7 @@ import (
 	"golang2/service"
 )
 
-
-// Handler untuk login
+//Hndler untuk login
 func LoginHandler(c *fiber.Ctx) error {
 	var input model.User
 
@@ -31,7 +30,8 @@ func LoginHandler(c *fiber.Ctx) error {
 	})
 }
 
-// Handler untuk register
+
+//Handler untuk reigster
 func RegisterHandler(c *fiber.Ctx) error {
 	var input model.User
 
@@ -54,3 +54,4 @@ func RegisterHandler(c *fiber.Ctx) error {
 		"message": msg,
 	})
 }
+
